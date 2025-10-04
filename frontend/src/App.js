@@ -4,6 +4,7 @@
  */
 
 import React, { useState } from 'react';
+import ReactMarkdown from 'react-markdown';
 import './App.css';
 
 function App() {
@@ -92,7 +93,11 @@ function App() {
                 className={`message ${message.sender === 'user' ? 'user-message' : 'ai-message'}`}
               >
                 <div className="message-bubble">
-                  {message.text}
+                  {message.sender === 'ai' ? (
+                    <ReactMarkdown>{message.text}</ReactMarkdown>
+                  ) : (
+                    message.text
+                  )}
                 </div>
               </div>
             ))
